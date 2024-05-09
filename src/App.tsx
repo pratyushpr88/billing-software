@@ -25,6 +25,9 @@ function App() {
 
   const [totalAmount, setTotalAmount] = useState<number>(0);
   const [totalDiscount, setTotalDiscount] = useState<string>("0");
+
+  const [invoiceDate,setInvoiceDate]=useState<string>("")
+  const [invoiceNumberText,setInvoiceNumberText]=useState<string>("")
   useEffect(() => {
     setTimeout(() => {
       setDate(new Date());
@@ -60,7 +63,7 @@ function App() {
     // Define options for A4 size
     const options = {
       margin: 0,
-      filename: `invoice-${invoiceNumber}.pdf`,
+      filename: `invoice-${invoiceNumberText}.pdf`,
       image: { type: "jpeg", quality: 2 },
       html2canvas: { scale: 4 },
       jsPDF: {
@@ -190,6 +193,24 @@ function App() {
           Additional Information
         </h3>
         <Input
+          label="Invoice Number"
+          placeholder="Enter invoice number"
+          labelPlacement="outside"
+          variant="bordered"
+          radius="sm"
+          value={invoiceNumberText}
+          onValueChange={setInvoiceNumberText}
+        />
+        <Input
+          label="Date"
+          placeholder="Enter Date"
+          labelPlacement="outside"
+          variant="bordered"
+          radius="sm"
+          value={invoiceDate}
+          onValueChange={setInvoiceDate}
+        />
+        <Input
           label="Discount"
           placeholder="Discount"
           labelPlacement="outside"
@@ -239,7 +260,7 @@ function App() {
                 />
               </div>
               <div className="flex flex-col justify-start items-start gap-0 *:w-full">
-                <p className="text-xs font-semibold mb-2.5">Invoice No:</p>
+                <p className="text-xs font-semibold mb-2.5">Invoice No:{invoiceNumberText}</p>
                 <p className="text-xs font-bold">Contact Info:</p>
                 <p className="text-xs font-bold">Narendrapur Station Road,</p>
                 <p className="text-xs font-bold">
@@ -280,7 +301,7 @@ function App() {
                 )}
               </div>
               <p className="text-xs font-medium">
-                Date: <span className="w-[170px] h-1 block"></span>
+                Date: <span className="w-[170px] h-1 block">{invoiceDate}</span>
               </p>
             </div>
             <div className="text-left grid grid-cols-7 pt-5 gap-5">
