@@ -2,10 +2,10 @@ import { Button, Input } from "@nextui-org/react";
 import html2pdf from "html2pdf.js";
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import Logo from "./logo.png";
-import QRCode from "./qr-code.png";
-import Stamp from "./stamp.png";
-import Watermark from "./watermark.png";
+import Logo from "/logo.png";
+import QRCode from "/qr-code.png";
+import Stamp from "/stamp.png";
+import Watermark from "/watermark.png";
 
 interface Item {
   name: string;
